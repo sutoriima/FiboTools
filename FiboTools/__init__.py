@@ -5,7 +5,7 @@ bl_info = {
     "blender":     (4, 0, 0),
     "location":    "View3D > Sidebar > FiboTools",
     "description": "Generate bones, split bones, and mesh cuts at Fibonacci ratios.",
-    "category":    "Rigging","Modeling"
+    "category":    "Rigging, Modeling",
 }
 
 import bpy
@@ -28,7 +28,7 @@ def fibonacci_ratios(count, reverse=False, blend=1.0):
     weights = [(1-blend)*b + blend*f for b, f in zip(base, fibs)]
     total = sum(weights)
     ratios = []
-    cum = 0.0２
+    cum = 0.0
     for w in weights:
         cum += w
         ratios.append(cum/total)
@@ -299,8 +299,6 @@ class FIB_OT_fibonacci_face_cut(bpy.types.Operator):
             ab_points = [v0.co.lerp(v1.co, r) for r in ratios]
             dc_points = [v3.co.lerp(v2.co, r) for r in ratios]
             # 分割点を一括生成
-            ab_new_verts = [bm.verts.new(pt) for pt in ab_points]
-            dc_new_verts = [bm.verts.new(pt) for pt in dc_points]
             bm.verts.index_update()
             bm.verts.ensure_lookup_table()
             # ABエッジ分割（元のab_edge/v0を使い続ける）
@@ -356,6 +354,7 @@ class FIB_OT_fibonacci_face_cut(bpy.types.Operator):
         bm.verts.ensure_lookup_table()
         bm.faces.index_update()
         bm.faces.ensure_lookup_table()
+        
         # 法線再計算
         bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
         bmesh.update_edit_mesh(obj.data)
