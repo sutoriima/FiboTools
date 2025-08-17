@@ -5,7 +5,7 @@ bl_info = {
     "blender":     (4, 0, 0),
     "location":    "View3D > Sidebar > FiboTools",
     "description": "Generate bones, split bones, and mesh cuts at Fibonacci ratios.",
-    "category":    "Rigging",
+    "category":    "Rigging","Modeling"
 }
 
 import bpy
