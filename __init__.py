@@ -11,6 +11,8 @@ bl_info = {
 import bpy
 import bmesh
 from mathutils import Vector
+from .module import fibonacci_sequence, fibonacci_ratios
+
 
 # パネル設定
 class FibSettings(bpy.types.PropertyGroup):
