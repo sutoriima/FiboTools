@@ -1,7 +1,7 @@
 bl_info = {
     "name":        "FiboTools",
     "author":      "SutoRiima",
-    "version":     (1, 0, 0),
+    "version":     (1, 0, 2),
     "blender":     (4, 0, 0),
     "location":    "View3D > Sidebar > FiboTools",
     "description": "Generate bones, split bones, and mesh cuts at Fibonacci ratios.",
